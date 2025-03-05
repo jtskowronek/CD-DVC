@@ -1,0 +1,466 @@
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /root/anaconda3/envs/CDC/lib/python3.9/site-packages/lpips/weights/v0.1/vgg.pth
+Decoder WZ frames, WZ frames folder clear !!
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /root/anaconda3/envs/CDC/lib/python3.9/site-packages/lpips/weights/v0.1/vgg.pth
+folder_clear!
+Images in /root/yezhuang/test_video_vvc/de_key_path padded and saved to /root/yezhuang/test_video_vvc/padded_img_path
+Images in /root/yezhuang/test_video_vvc/img_path padded and saved to /root/yezhuang/test_video_vvc/padded_img_path
+key bps: 186.734765625
+decode WZ: 2
+bpp:  tensor([0.2026], device='cuda:0')
+psnr: 29.740447843435657
+decode WZ: 4
+bpp:  tensor([0.2022], device='cuda:0')
+psnr: 29.91471918981777
+decode WZ: 6
+bpp:  tensor([0.2019], device='cuda:0')
+psnr: 29.80243015460829
+decode WZ: 8
+bpp:  tensor([0.2029], device='cuda:0')
+psnr: 29.34329955763878
+decode WZ: 10
+bpp:  tensor([0.2045], device='cuda:0')
+psnr: 29.502968748523596
+decode WZ: 12
+bpp:  tensor([0.2033], device='cuda:0')
+psnr: 29.46831369861437
+decode WZ: 14
+bpp:  tensor([0.2062], device='cuda:0')
+psnr: 29.538586714894034
+decode WZ: 16
+bpp:  tensor([0.2061], device='cuda:0')
+psnr: 29.17269823733127
+decode WZ: 18
+bpp:  tensor([0.2036], device='cuda:0')
+psnr: 28.93834025362791
+decode WZ: 20
+bpp:  tensor([0.2022], device='cuda:0')
+psnr: 28.799528350253944
+decode WZ: 22
+bpp:  tensor([0.2022], device='cuda:0')
+psnr: 28.655164167044312
+decode WZ: 24
+bpp:  tensor([0.2034], device='cuda:0')
+psnr: 28.261985932902782
+decode WZ: 26
+bpp:  tensor([0.2042], device='cuda:0')
+psnr: 28.263840454345427
+decode WZ: 28
+bpp:  tensor([0.2047], device='cuda:0')
+psnr: 27.933851611105442
+decode WZ: 30
+bpp:  tensor([0.2036], device='cuda:0')
+psnr: 28.270796538874066
+decode WZ: 32
+bpp:  tensor([0.2039], device='cuda:0')
+psnr: 28.167109031532632
+decode WZ: 34
+bpp:  tensor([0.2040], device='cuda:0')
+psnr: 27.97833065441356
+decode WZ: 36
+bpp:  tensor([0.2024], device='cuda:0')
+psnr: 27.908003741851005
+decode WZ: 38
+bpp:  tensor([0.2058], device='cuda:0')
+psnr: 28.072341901105517
+decode WZ: 40
+bpp:  tensor([0.2053], device='cuda:0')
+psnr: 28.001274877048218
+decode WZ: 42
+bpp:  tensor([0.2038], device='cuda:0')
+psnr: 27.99957346911841
+decode WZ: 44
+bpp:  tensor([0.2040], device='cuda:0')
+psnr: 28.201133576927365
+decode WZ: 46
+bpp:  tensor([0.2050], device='cuda:0')
+psnr: 28.05117903999995
+decode WZ: 48
+bpp:  tensor([0.2070], device='cuda:0')
+psnr: 27.875724293793773
+decode WZ: 50
+bpp:  tensor([0.2059], device='cuda:0')
+psnr: 27.842731923756272
+decode WZ: 52
+bpp:  tensor([0.2051], device='cuda:0')
+psnr: 27.671776018400635
+decode WZ: 54
+bpp:  tensor([0.2066], device='cuda:0')
+psnr: 27.725529121559497
+decode WZ: 56
+bpp:  tensor([0.2082], device='cuda:0')
+psnr: 27.846237558308907
+decode WZ: 58
+bpp:  tensor([0.2086], device='cuda:0')
+psnr: 27.73600568503868
+decode WZ: 60
+bpp:  tensor([0.2067], device='cuda:0')
+psnr: 27.85397843684259
+decode WZ: 62
+bpp:  tensor([0.2077], device='cuda:0')
+psnr: 27.78094213589054
+decode WZ: 64
+bpp:  tensor([0.2072], device='cuda:0')
+psnr: 27.745041466503082
+decode WZ: 66
+bpp:  tensor([0.2074], device='cuda:0')
+psnr: 27.156753624594753
+decode WZ: 68
+bpp:  tensor([0.2078], device='cuda:0')
+psnr: 25.23182738355763
+decode WZ: 70
+bpp:  tensor([0.2066], device='cuda:0')
+psnr: 26.277172559380606
+decode WZ: 72
+bpp:  tensor([0.2118], device='cuda:0')
+psnr: 26.767376277089113
+decode WZ: 74
+bpp:  tensor([0.2165], device='cuda:0')
+psnr: 23.057939395565295
+decode WZ: 76
+bpp:  tensor([0.2183], device='cuda:0')
+psnr: 26.378199130238627
+decode WZ: 78
+bpp:  tensor([0.2182], device='cuda:0')
+psnr: 26.610180483847085
+decode WZ: 80
+bpp:  tensor([0.2195], device='cuda:0')
+psnr: 26.691445609242432
+decode WZ: 82
+bpp:  tensor([0.2185], device='cuda:0')
+psnr: 27.168027293576046
+decode WZ: 84
+bpp:  tensor([0.2186], device='cuda:0')
+psnr: 27.212923225868728
+decode WZ: 86
+bpp:  tensor([0.2185], device='cuda:0')
+psnr: 26.07100868732526
+decode WZ: 88
+bpp:  tensor([0.2218], device='cuda:0')
+psnr: 26.167323006336783
+decode WZ: 90
+bpp:  tensor([0.2202], device='cuda:0')
+psnr: 27.33629556734503
+decode WZ: 92
+bpp:  tensor([0.2194], device='cuda:0')
+psnr: 27.40904374661184
+decode WZ: 94
+bpp:  tensor([0.2189], device='cuda:0')
+psnr: 27.491994012111
+decode WZ: 96
+bpp:  tensor([0.2183], device='cuda:0')
+psnr: 27.53632840260762
+decode WZ: 98
+bpp:  tensor([0.2176], device='cuda:0')
+psnr: 27.23509958303473
+decode WZ: 100
+bpp:  tensor([0.2186], device='cuda:0')
+psnr: 27.326592202441663
+decode WZ: 102
+bpp:  tensor([0.2172], device='cuda:0')
+psnr: 27.653408681680347
+decode WZ: 104
+bpp:  tensor([0.2175], device='cuda:0')
+psnr: 27.112505013880455
+decode WZ: 106
+bpp:  tensor([0.2195], device='cuda:0')
+psnr: 26.792808524014973
+decode WZ: 108
+bpp:  tensor([0.2199], device='cuda:0')
+psnr: 26.70129338569492
+decode WZ: 110
+bpp:  tensor([0.2163], device='cuda:0')
+psnr: 26.746056748679486
+decode WZ: 112
+bpp:  tensor([0.2154], device='cuda:0')
+psnr: 26.936082187353783
+decode WZ: 114
+bpp:  tensor([0.2180], device='cuda:0')
+psnr: 27.078825688594662
+decode WZ: 116
+bpp:  tensor([0.2174], device='cuda:0')
+psnr: 26.98104778505424
+decode WZ: 118
+bpp:  tensor([0.2162], device='cuda:0')
+psnr: 27.049339826266863
+decode WZ: 120
+bpp:  tensor([0.2152], device='cuda:0')
+psnr: 27.379794320443366
+decode WZ: 122
+bpp:  tensor([0.2146], device='cuda:0')
+psnr: 27.855249150284894
+decode WZ: 124
+bpp:  tensor([0.2099], device='cuda:0')
+psnr: 27.993436331305055
+decode WZ: 126
+bpp:  tensor([0.2102], device='cuda:0')
+psnr: 28.132027789098018
+decode WZ: 128
+bpp:  tensor([0.2116], device='cuda:0')
+psnr: 28.293860617047
+decode WZ: 130
+bpp:  tensor([0.2134], device='cuda:0')
+psnr: 28.29933805527418
+decode WZ: 132
+bpp:  tensor([0.2138], device='cuda:0')
+psnr: 28.338998670129474
+decode WZ: 134
+bpp:  tensor([0.2148], device='cuda:0')
+psnr: 28.355349431597414
+decode WZ: 136
+bpp:  tensor([0.2140], device='cuda:0')
+psnr: 28.145269020978496
+decode WZ: 138
+bpp:  tensor([0.2130], device='cuda:0')
+psnr: 27.869530808101317
+decode WZ: 140
+bpp:  tensor([0.2136], device='cuda:0')
+psnr: 27.412903234335175
+decode WZ: 142
+bpp:  tensor([0.2125], device='cuda:0')
+psnr: 27.765489557756307
+decode WZ: 144
+bpp:  tensor([0.2122], device='cuda:0')
+psnr: 27.889632225494
+decode WZ: 146
+bpp:  tensor([0.2104], device='cuda:0')
+psnr: 27.497621765224878
+decode WZ: 148
+bpp:  tensor([0.2096], device='cuda:0')
+psnr: 27.558659995258772
+decode WZ: 150
+bpp:  tensor([0.2096], device='cuda:0')
+psnr: 27.783501017555384
+decode WZ: 152
+bpp:  tensor([0.2099], device='cuda:0')
+psnr: 28.069921220910818
+decode WZ: 154
+bpp:  tensor([0.2094], device='cuda:0')
+psnr: 28.071911819701985
+decode WZ: 156
+bpp:  tensor([0.2084], device='cuda:0')
+psnr: 28.17115110550125
+decode WZ: 158
+bpp:  tensor([0.2093], device='cuda:0')
+psnr: 27.72446674652128
+decode WZ: 160
+bpp:  tensor([0.2104], device='cuda:0')
+psnr: 27.719860339912895
+decode WZ: 162
+bpp:  tensor([0.2105], device='cuda:0')
+psnr: 27.71516500480935
+decode WZ: 164
+bpp:  tensor([0.2090], device='cuda:0')
+psnr: 28.154479389775915
+decode WZ: 166
+bpp:  tensor([0.2100], device='cuda:0')
+psnr: 27.821937675276743
+decode WZ: 168
+bpp:  tensor([0.2094], device='cuda:0')
+psnr: 27.626258174448004
+decode WZ: 170
+bpp:  tensor([0.2090], device='cuda:0')
+psnr: 27.33388958419504
+decode WZ: 172
+bpp:  tensor([0.2121], device='cuda:0')
+psnr: 27.549150174453505
+decode WZ: 174
+bpp:  tensor([0.2106], device='cuda:0')
+psnr: 27.948559727593015
+decode WZ: 176
+bpp:  tensor([0.2105], device='cuda:0')
+psnr: 27.749087800319792
+decode WZ: 178
+bpp:  tensor([0.2109], device='cuda:0')
+psnr: 27.701189188377874
+decode WZ: 180
+bpp:  tensor([0.2112], device='cuda:0')
+psnr: 27.4828650758564
+decode WZ: 182
+bpp:  tensor([0.2084], device='cuda:0')
+psnr: 27.338861775649804
+decode WZ: 184
+bpp:  tensor([0.2102], device='cuda:0')
+psnr: 27.513452490848934
+decode WZ: 186
+bpp:  tensor([0.2118], device='cuda:0')
+psnr: 27.918931062742516
+decode WZ: 188
+bpp:  tensor([0.2112], device='cuda:0')
+psnr: 28.015341065457026
+decode WZ: 190
+bpp:  tensor([0.2107], device='cuda:0')
+psnr: 28.12155768341738
+decode WZ: 192
+bpp:  tensor([0.2130], device='cuda:0')
+psnr: 27.40803904875639
+decode WZ: 194
+bpp:  tensor([0.2107], device='cuda:0')
+psnr: 27.09995062438015
+decode WZ: 196
+bpp:  tensor([0.2089], device='cuda:0')
+psnr: 27.236041778203987
+decode WZ: 198
+bpp:  tensor([0.2093], device='cuda:0')
+psnr: 27.631734792524874
+decode WZ: 200
+bpp:  tensor([0.2094], device='cuda:0')
+psnr: 28.044356223784778
+decode WZ: 202
+bpp:  tensor([0.2103], device='cuda:0')
+psnr: 27.888833344964496
+decode WZ: 204
+bpp:  tensor([0.2090], device='cuda:0')
+psnr: 27.747905562026013
+decode WZ: 206
+bpp:  tensor([0.2124], device='cuda:0')
+psnr: 27.748826457909352
+decode WZ: 208
+bpp:  tensor([0.2123], device='cuda:0')
+psnr: 27.461009878758542
+decode WZ: 210
+bpp:  tensor([0.2110], device='cuda:0')
+psnr: 27.568417985685166
+decode WZ: 212
+bpp:  tensor([0.2101], device='cuda:0')
+psnr: 28.023647776246698
+decode WZ: 214
+bpp:  tensor([0.2112], device='cuda:0')
+psnr: 27.777905837626456
+decode WZ: 216
+bpp:  tensor([0.2092], device='cuda:0')
+psnr: 27.85614495056621
+decode WZ: 218
+bpp:  tensor([0.2103], device='cuda:0')
+psnr: 28.13881692999783
+decode WZ: 220
+bpp:  tensor([0.2106], device='cuda:0')
+psnr: 27.895777227498414
+decode WZ: 222
+bpp:  tensor([0.2085], device='cuda:0')
+psnr: 27.682597371158447
+decode WZ: 224
+bpp:  tensor([0.2087], device='cuda:0')
+psnr: 27.708917217240202
+decode WZ: 226
+bpp:  tensor([0.2094], device='cuda:0')
+psnr: 27.783525903816457
+decode WZ: 228
+bpp:  tensor([0.2074], device='cuda:0')
+psnr: 27.754181395688235
+decode WZ: 230
+bpp:  tensor([0.2091], device='cuda:0')
+psnr: 27.94249389216877
+decode WZ: 232
+bpp:  tensor([0.2100], device='cuda:0')
+psnr: 27.70608377858437
+decode WZ: 234
+bpp:  tensor([0.2095], device='cuda:0')
+psnr: 27.712695027522123
+decode WZ: 236
+bpp:  tensor([0.2073], device='cuda:0')
+psnr: 27.90988585609781
+decode WZ: 238
+bpp:  tensor([0.2086], device='cuda:0')
+psnr: 27.832383278291598
+decode WZ: 240
+bpp:  tensor([0.2096], device='cuda:0')
+psnr: 28.11715475737607
+decode WZ: 242
+bpp:  tensor([0.2092], device='cuda:0')
+psnr: 28.332356132752157
+decode WZ: 244
+bpp:  tensor([0.2091], device='cuda:0')
+psnr: 27.800726330399286
+decode WZ: 246
+bpp:  tensor([0.2082], device='cuda:0')
+psnr: 27.919560445856526
+decode WZ: 248
+bpp:  tensor([0.2090], device='cuda:0')
+psnr: 27.73465054237392
+decode WZ: 250
+bpp:  tensor([0.2116], device='cuda:0')
+psnr: 28.04983065667491
+decode WZ: 252
+bpp:  tensor([0.2097], device='cuda:0')
+psnr: 27.98409365515182
+decode WZ: 254
+bpp:  tensor([0.2102], device='cuda:0')
+psnr: 28.041112744716262
+decode WZ: 256
+bpp:  tensor([0.2076], device='cuda:0')
+psnr: 28.234391675359667
+decode WZ: 258
+bpp:  tensor([0.2101], device='cuda:0')
+psnr: 28.17598185005702
+decode WZ: 260
+bpp:  tensor([0.2091], device='cuda:0')
+psnr: 28.04253251571697
+decode WZ: 262
+bpp:  tensor([0.2057], device='cuda:0')
+psnr: 28.177574350973707
+decode WZ: 264
+bpp:  tensor([0.2081], device='cuda:0')
+psnr: 28.317632280153624
+decode WZ: 266
+bpp:  tensor([0.2085], device='cuda:0')
+psnr: 28.017129048380397
+decode WZ: 268
+bpp:  tensor([0.2087], device='cuda:0')
+psnr: 28.374120150909956
+decode WZ: 270
+bpp:  tensor([0.2085], device='cuda:0')
+psnr: 28.530973198792058
+decode WZ: 272
+bpp:  tensor([0.2051], device='cuda:0')
+psnr: 28.347628035534772
+decode WZ: 274
+bpp:  tensor([0.2047], device='cuda:0')
+psnr: 28.3276431808575
+decode WZ: 276
+bpp:  tensor([0.2058], device='cuda:0')
+psnr: 28.121086618122693
+decode WZ: 278
+bpp:  tensor([0.2051], device='cuda:0')
+psnr: 28.002368239027682
+decode WZ: 280
+bpp:  tensor([0.2046], device='cuda:0')
+psnr: 27.98600395497466
+decode WZ: 282
+bpp:  tensor([0.2062], device='cuda:0')
+psnr: 27.829927035458386
+decode WZ: 284
+bpp:  tensor([0.2076], device='cuda:0')
+psnr: 28.241764090945072
+decode WZ: 286
+bpp:  tensor([0.2076], device='cuda:0')
+psnr: 28.416474727012346
+decode WZ: 288
+bpp:  tensor([0.2078], device='cuda:0')
+psnr: 28.514912514997754
+decode WZ: 290
+bpp:  tensor([0.2086], device='cuda:0')
+psnr: 28.21052559598749
+decode WZ: 292
+bpp:  tensor([0.2068], device='cuda:0')
+psnr: 27.995026679349433
+decode WZ: 294
+bpp:  tensor([0.2060], device='cuda:0')
+psnr: 27.973428407418023
+decode WZ: 296
+bpp:  tensor([0.2040], device='cuda:0')
+psnr: 27.931024590210175
+decode WZ: 298
+bpp:  tensor([0.2029], device='cuda:0')
+psnr: 27.68223711413497
+time:  967.1995620727539
+0.20845629632472992
+encoder bitrate : 225.429465630278 kbps 
+37.8956
+video all average psnr : 32.852328606617206
+delete result.yuv,and create new result.yuv !
+cat time : 1779.2434494495392
+video image SS-SSIM average:  0.9799123133020999
+video image LPIPS average:  0.09392556338804621
+Images(WZ and Key frames) merge into result.yuv success !
