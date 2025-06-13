@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"name": "my_pytools",
+			"path": "../../src/python/my_pytools"
+		},
+		{
+			"name": "dc-dvc",
+			"path": "."
+		}
+	],
+	// "settings": {
+	// 	"launch": {
+	// 		"configurations": [],
+	// 		"compounds": []
+	// 	}
+	// }
+}
