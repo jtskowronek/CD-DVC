@@ -146,6 +146,7 @@ def file_name(path):
             for tt in range(len(files)):
                 file_list.append(files[tt]) # All non-directory files in the current path
     return file_list
+
 def gauss_noise(image, mean=0, var=0.001):
     '''
         Add Gaussian noise
