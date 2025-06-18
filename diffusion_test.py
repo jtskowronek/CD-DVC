@@ -23,8 +23,8 @@ from torchvision.transforms.functional import resize
 from PIL import Image
 import lpips
 from skimage.metrics import peak_signal_noise_ratio as cacula_psnr
-import warnings
-warnings.filterwarnings("ignore")
+# import warnings
+# warnings.filterwarnings("ignore")
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 gpu_num = torch.cuda.device_count()
@@ -98,10 +98,10 @@ def pad_and_filter_images(img_path, output_folder):
         x_offset = (target_size[0] - original_size[0]) // 2
         y_offset = (target_size[1] - original_size[1]) // 2
 
-        # 将原始图像粘贴到黑色背景图像的中央
+        # Paste the original image to the center of the black background image
         new_img.paste(img, (x_offset, y_offset))
 
-        # 保存处理后的图像到输出文件夹
+        # Save the processed image to the output folder
         output_path = os.path.join(output_folder, file_name)
         new_img.save(output_path)
 
@@ -110,29 +110,29 @@ def pad_and_filter_images(img_path, output_folder):
 
 
 def crop_and_save_images(input_folder, output_folder):
-    """将 192x192 彩色图像裁剪为 176x144 并保存到目标文件夹"""
+    """Crop 192x192 color images to 176x144 and save to the target folder"""
     clear_folder(output_folder)
     print("folder_clear!")
 
     for img_name in os.listdir(input_folder):
         img_path = os.path.join(input_folder, img_name)
-        img = Image.open(img_path).convert('RGB')  # 打开为彩色图像
+        img = Image.open(img_path).convert('RGB')  # Open as color image
 
-        # 确保图像尺寸为 192x192
+        # Ensure image size is 192x192
         if img.size != (192, 192):
             print(f"Skipping {img_name} because its size is not 192x192")
             continue
 
-        # 计算裁剪区域
+        # Calculate crop area
         left = (192 - 176) // 2
         top = (192 - 144) // 2
         right = left + 176
         bottom = top + 144
 
-        # 裁剪图像
+        # Crop image
         cropped_img = img.crop((left, top, right, bottom))
 
-        # 保存图像
+        # Save image
         cropped_img.save(os.path.join(output_folder, img_name))
 
     print(f"Images in {input_folder} cropped to 176x144 and saved to {output_folder}")
@@ -140,17 +140,17 @@ def crop_and_save_images(input_folder, output_folder):
 
 def file_name(path):
     file_list=[]
-    dir = os.listdir(path)
-    for name in dir:
+    pth = os.listdir(path)
+    for name in pth:
         for root, dirs, files in os.walk(os.getcwd()):
             for tt in range(len(files)):
-                file_list.append(files[tt]) #当前路径下所有非目录子文件
+                file_list.append(files[tt]) # All non-directory files in the current path
     return file_list
-def gasuss_noise(image, mean=0, var=0.001):
+def gauss_noise(image, mean=0, var=0.001):
     '''
-        添加高斯噪声
-        mean : 均值
-        var : 方差
+        Add Gaussian noise
+        mean : mean value
+        var : variance
     '''
     #image = np.array(image/255, dtype=float)
     noise = np.random.normal(mean, var ** 0.5, image.shape)
@@ -161,7 +161,7 @@ def gasuss_noise(image, mean=0, var=0.001):
         low_clip = 0.
     out = np.clip(out, low_clip, 1.0)
     #out = np.uint8(out*255)
-    #cv.imshow("gasuss", out)
+    #cv.imshow("gauss", out)
     return out
 
 
@@ -169,11 +169,11 @@ def get_args(filename):
     args = {}
     config = configparser.RawConfigParser()
 
-    # 使用 `read_string` 读取无 section 的配置文件
+    # Use `read_string` to read config file without section
     with open(filename, 'r') as f:
         config.read_string("[DEFAULT]\n" + f.read())
 
-    # 直接处理键值对
+    # Directly process key-value pairs
     for option in config['DEFAULT']:
         value = config['DEFAULT'][option]
         if value.isdigit():
@@ -197,20 +197,20 @@ def psnr01(img1, img2):
 
 def load_set(test,batch_size):
     test_set = datasetDistribute.ImageFolder(is_train=False, root=test)
-    # 1210 加载test
+    # 1210 Load test
     test_loader = data.DataLoader(
         dataset=test_set, batch_size=batch_size, shuffle=True, num_workers=0)
     return test_loader
 def flag_judge(flag,imgPre,imgMid,imgNext):
-    if flag == 1:  # 前
+    if flag == 1:  # Previous
         dataSide = imgPre
-    elif flag == 2:  # 中
+    elif flag == 2:  # Middle
         dataSide = imgMid
-    elif flag == 3:  # 后
+    elif flag == 3:  # Next
         dataSide = imgNext
-    elif flag == 4:  # 噪声
-        dataSide = torch.FloatTensor(gasuss_noise(imgMid.numpy()))
-    elif flag == 5:  # 前一帧和后一帧
+    elif flag == 4:  # Noise
+        dataSide = torch.FloatTensor(gauss_noise(imgMid.numpy()))
+    elif flag == 5:  # Previous and next frame
         dataSide = x = torch.cat([imgPre, imgNext], dim=1)
     elif flag == 6:
         dataSide = (imgPre + imgNext) / 2
@@ -241,52 +241,52 @@ def encode_key(filename,QP):
 
 def decode_key(de_key_path, height, width, start_frame):
     """
-    从 YUV 文件中提取图像帧并保存为 PNG 格式。
-    :param de_key_path: 保存解码图像的文件夹路径
-    :param height: 图像的高度
-    :param width: 图像的宽度
-    :param start_frame: 起始帧
+    Extract image frames from YUV file and save as PNG format.
+    :param de_key_path: Folder path to save decoded images
+    :param height: Image height
+    :param width: Image width
+    :param start_frame: Start frame
     :return: None
     """
-    # 清空目标文件夹
+    # Clear target folder
     if os.listdir(de_key_path):
         os.system('rm {}/*'.format(de_key_path))
         print('Key frames folder cleared!')
 
     yuv_file = 'rec.yuv'
     if os.path.exists(yuv_file):
-        # 计算每帧的大小 (YUV420)
+        # Calculate size per frame (YUV420)
         frame_size = width * height + (width // 2) * (height // 2) * 2  # Y + U + V
-        # 打开 YUV 文件并计算总帧数
+        # Open YUV file and calculate total frames
         with open(yuv_file, 'rb') as fp:
-            fp.seek(0, 2)  # 设置文件指针到文件流的尾部
-            fp_end = fp.tell()  # 获取文件尾指针位置
-            num_frames = fp_end // frame_size  # 计算文件中包含的帧数
+            fp.seek(0, 2)  # Set file pointer to end of file
+            fp_end = fp.tell()  # Get file end pointer position
+            num_frames = fp_end // frame_size  # Calculate number of frames in file
 
             print(f"This {yuv_file} file has {num_frames} frames!")
 
-            # 设置文件指针到起始帧
+            # Set file pointer to start frame
             fp.seek(frame_size * start_frame, 0)
             t = 1
             for i in range(num_frames - start_frame):
-                # 读取一帧数据 (YUV420格式)
+                # Read one frame data (YUV420 format)
                 yuv_data = np.frombuffer(fp.read(frame_size), dtype=np.uint8)
 
-                # 分离 Y, U, V 分量
+                # Separate Y, U, V components
                 y = yuv_data[:width * height].reshape((height, width))
                 u = yuv_data[width * height:width * height + (width // 2) * (height // 2)].reshape(
                     (height // 2, width // 2))
                 v = yuv_data[width * height + (width // 2) * (height // 2):].reshape((height // 2, width // 2))
 
-                # 上采样 U 和 V 分量到与 Y 分量相同的分辨率
+                # Upsample U and V components to same resolution as Y
                 u_up = cv2.resize(u, (width, height), interpolation=cv2.INTER_LINEAR)
                 v_up = cv2.resize(v, (width, height), interpolation=cv2.INTER_LINEAR)
 
-                # 合并 YUV 分量并转换为 BGR 格式
+                # Merge YUV components and convert to BGR format
                 yuv_img = cv2.merge([y, u_up, v_up])
                 bgr_img = cv2.cvtColor(yuv_img, cv2.COLOR_YUV2BGR)
 
-                # 保存图片
+                # Save image
                 output_file = os.path.join(de_key_path, f'hall_qcif_{t:05d}.png')
                 cv2.imwrite(output_file, bgr_img)
                 #print(f"Saved frame {t} to {output_file}")
@@ -300,51 +300,51 @@ def decode_key(de_key_path, height, width, start_frame):
 
 def yuv2img(file_name, save_path, height, width, start_frame):
     """
-    将 YUV 视频文件转换为图片
-    :param file_name: 待处理 YUV 视频的名字
-    :param save_path: 保存图片的文件夹路径
-    :param height: 图像的高度
-    :param width: 图像的宽度
-    :param start_frame: 起始帧
+    Convert YUV video file to images
+    :param file_name: Name of YUV video to process
+    :param save_path: Folder path to save images
+    :param height: Image height
+    :param width: Image width
+    :param start_frame: Start frame
     :return: None
     """
-    # 清空目标文件夹
+    # Clear target folder
     if os.listdir(save_path):
         os.system('rm {}/*'.format(save_path))
         print('origin image frames folder cleared!')
 
-    # 计算每帧的大小 (YUV420)
-    frame_size = width * height + (width // 2) * (height // 2) * 2  # Y分量 + U和V分量
+    # Calculate size per frame (YUV420)
+    frame_size = width * height + (width // 2) * (height // 2) * 2  # Y + U + V
 
-    # 打开文件并计算总帧数
+    # Open file and calculate total frames
     with open(file_name, 'rb') as fp:
-        fp.seek(0, 2)  # 设置文件指针到文件流的尾部
-        fp_end = fp.tell()  # 获取文件尾指针位置
-        num_frames = fp_end // frame_size  # 计算文件中包含的帧数
+        fp.seek(0, 2)  # Set file pointer to end of file
+        fp_end = fp.tell()  # Get file end pointer position
+        num_frames = fp_end // frame_size  # Calculate number of frames in file
 
         print(f"This {file_name} file has {num_frames} frame imgs!")
 
-        # 将文件指针设置到起始帧位置
+        # Set file pointer to start frame
         fp.seek(frame_size * start_frame, 0)
 
         for i in range(num_frames - start_frame):
-            # 读取一帧数据 (YUV420格式)
+            # Read one frame data (YUV420 format)
             yuv_data = np.frombuffer(fp.read(frame_size), dtype=np.uint8)
 
-            # 分离Y, U, V分量
+            # Separate Y, U, V components
             y = yuv_data[:width * height].reshape((height, width))
             u = yuv_data[width * height:width * height + (width // 2) * (height // 2)].reshape((height // 2, width // 2))
             v = yuv_data[width * height + (width // 2) * (height // 2):].reshape((height // 2, width // 2))
 
-            # 上采样U和V分量到与Y分量相同的分辨率
+            # Upsample U and V components to same resolution as Y
             u_up = cv2.resize(u, (width, height), interpolation=cv2.INTER_LINEAR)
             v_up = cv2.resize(v, (width, height), interpolation=cv2.INTER_LINEAR)
 
-            # 合并YUV分量并转换为BGR格式
+            # Merge YUV components and convert to BGR format
             yuv_img = cv2.merge([y, u_up, v_up])
             bgr_img = cv2.cvtColor(yuv_img, cv2.COLOR_YUV2BGR)
 
-            # 保存图片
+            # Save image
             cv2.imwrite(f'{save_path}/hall_qcif_{i + 1:05d}.png', bgr_img)
 
         print(f"Extracted {num_frames - start_frame} frames, saved to {save_path}.")
@@ -353,21 +353,21 @@ def yuv2img(file_name, save_path, height, width, start_frame):
 
 
 
-def pipei(dir):
-    while not os.path.exists(dir):  # 判断文件是否存在
-        dir = input('Cann\'t find the file,Please input the correct file dir:')
-    data = open(dir, 'r')  # 打开文件
+def pipei(pth):
+    while not os.path.exists(pth):  # Check if file exists
+        pth = input('Cann\'t find the file,Please input the correct file pth:')
+    data = open(pth, 'r')  # Open file
     flag = 0
     p = re.compile(r'LayerId')
     for lines in data:
-        value = lines.split('\t')  # 读出每行
+        value = lines.split('\t')  # Read each line
         # print(value)
         if flag:
             if flag ==1:
                 # print(str(value)[-13:-5])
                 psnr = float(str(value)[-13:-5])
                 print(psnr)
-            flag =flag -1
+            flag -= 1
         if re.search(p, str(value)):
             flag = 2
     data.close()
@@ -381,11 +381,11 @@ def calculate_psnr(img1_path, img2_path):
     original_img = Image.open(img1_path)
     compressed_img = Image.open(img2_path)
 
-    # 调整大小为一致
+    # Resize to be consistent
     original_img = resize(transform(original_img), (144, 176))
     compressed_img = resize(transform(compressed_img), (144, 176))
 
-    # 计算PSNR
+    # Calculate PSNR
     # psnr_value = calculate_psnr(original_img.numpy(), compressed_img.numpy())
     return cacula_psnr(original_img.numpy(), compressed_img.numpy())
 
@@ -395,14 +395,14 @@ def calculate_lpips(img1_path, img2_path):
     # transform = transforms.ToTensor()
     img1 = transform(img1)
     img2 = transform(img2)
-    # 确保 img1 和 img2 都是 4D tensor (batch, channels, height, width)
+    # Ensure img1 and img2 are 4D tensor (batch, channels, height, width)
     # if len(img1.shape) == 3:
     #     img1 = img1.unsqueeze(0)
     # if len(img2.shape) == 3:
     #     img2 = img2.unsqueeze(0)
     img1 = img1.unsqueeze(0)
     img2 = img2.unsqueeze(0)
-    # 计算 LPIPS
+    # Calculate LPIPS
     lpips_value = lpips_model(img1, img2)
     return lpips_value.item()
 
@@ -424,11 +424,9 @@ def video_cat(path1,path2,num=300):
                                          path1 + '/hall_qcif_%05d.png' % (i)))
             image = Image.open(path1 + '/hall_qcif_%05d.png' % (i))
         else:
-            ssim.append(msssim('/home/test/yezhuang/test_video_vvc/img_path/hall_qcif_%05d.png' % (i),
-                               path2 + '/hall_qcif_{:05d}.png'.format(i)))
+            ssim.append(msssim('/home/test/yezhuang/test_video_vvc/img_path/hall_qcif_%05d.png' % (i), path2 + '/hall_qcif_{:05d}.png'.format(i)))
             #psnr.append(calculate_psnr('/root/yezhuang/test_video_comp_VTM/img_path/hall_qcif_%05d.png' % (i),path2 + '/hall_qcif_{:05d}.png'.format(i)))
-            lpips.append(calculate_lpips('/home/test/yezhuang/test_video_vvc/img_path/hall_qcif_%05d.png' % (i),
-                                         path2 + '/hall_qcif_{:05d}.png'.format(i)))
+            lpips.append(calculate_lpips('/home/test/yezhuang/test_video_vvc/img_path/hall_qcif_%05d.png' % (i), path2 + '/hall_qcif_{:05d}.png'.format(i)))
             image = Image.open(path2 + '/hall_qcif_{:05d}.png'.format(i))
 
         image = np.asarray(image)
@@ -445,13 +443,14 @@ def video_cat(path1,path2,num=300):
 
 
 
-
-
 def get_bps(path1,path2):
     key_size = os.path.getsize(path1)*8.0
     wz_size = os.path.getsize(path2)*8.0
     bps = (key_size/75.0*7.5+wz_size/74.0*7.5)/1024.0
     return bps
+
+# ################################################################
+# ################################################################
 
 def main(rank):
     args = get_args("config.ini")
@@ -521,12 +520,12 @@ def main(rank):
     #decode_key(args['de_key_path'], 144, 176, 0)
     #rename_and_move_images(args['temp_de_key'],args['de_key_path'] )
 
-    # 先处理 de_key_path 中的图像
+    # First process images in de_key_path
     pad_images_to_192x192(args['de_key_path'], args['padded_img_path'])
-    # 再处理 img_path 中的图像
+    # Then process images in img_path
     pad_and_filter_images(args['img_path'], args['padded_img_path'])
     test_set = datasetDistribute.ImageFolder(is_train=False, root=args['padded_img_path'])
-    # 1210 加载test
+    # 1210 Load test
     test_loader = data.DataLoader(
         dataset=test_set, batch_size=1, shuffle=False, num_workers=0)
     key_size = os.path.getsize("/home/test/yezhuang/work/video/300frames/hall/qp_24/str_hall_176x144_15fps_420_8bit_YUV_24.bin") * 8.0
@@ -581,7 +580,13 @@ def main(rank):
     #crop_and_save_images(path, args['de_key_path'])
     #crop_and_save_images(path, args['recon_file'])
     print("encoder bitrate : {} kbps ".format(bps));
-    print('video all average psnr :',( np.mean(num)+pipei('/home/test/yezhuang/work/video/300frames/hall/qp_24/log_hall_176x144_15fps_420_8bit_YUV_24.txt'))/2.0)
+    print('video all average psnr :',
+          (np.mean(num) + \
+              pipei(
+                  '/home/test/yezhuang/work/video/300frames/hall/qp_24/log_hall_176x144_15fps_420_8bit_YUV_24.txt'
+                  )
+              ) / 2.0
+          )
 
     video_cat(args['de_key_path'], args['output_file'])
 

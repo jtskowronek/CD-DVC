@@ -27,7 +27,7 @@ def file_name(path):
             for tt in range(len(files)):
                 file_list.append(files[tt]) #当前路径下所有非目录子文件
     return file_list
-def gasuss_noise(image, mean=0, var=0.001):
+def gauss_noise(image, mean=0, var=0.001):
     '''
         添加高斯噪声
         mean : 均值
@@ -42,7 +42,7 @@ def gasuss_noise(image, mean=0, var=0.001):
         low_clip = 0.
     out = np.clip(out, low_clip, 1.0)
     #out = np.uint8(out*255)
-    #cv.imshow("gasuss", out)
+    #cv.imshow("gauss", out)
     return out
 def get_args(filename,section):
     args = {}
@@ -153,7 +153,7 @@ def flag_judge(flag,imgPre,imgMid,imgNext):
     elif flag == 3:  # 后
         dataSide = imgNext
     elif flag == 4:  # 噪声
-        dataSide = torch.FloatTensor(gasuss_noise(imgMid.numpy()))
+        dataSide = torch.FloatTensor(gauss_noise(imgMid.numpy()))
     elif flag == 5:  # 前一帧和后一帧
         dataSide = x = torch.cat([imgPre, imgNext], dim=1)
     elif flag == 6:

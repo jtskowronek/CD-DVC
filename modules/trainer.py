@@ -4,7 +4,7 @@ from torch.optim import Adam, AdamW
 from torch.utils.tensorboard import SummaryWriter
 import torch.utils.data as data
 
-from .utils import cycle
+from utils import cycle
 from torch.optim.lr_scheduler import LambdaLR
 import image_comp.datasetDistribute0318 as datasetDistribute0318
 import config
